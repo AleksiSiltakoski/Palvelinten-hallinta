@@ -15,4 +15,4 @@ Tämän jälkeen laitoin terminaalin komento riville "w" ja näin, että olin ki
 Terminaaliin laitoin komennon "exit" ja toinen yhteyksistä disconnectasi
 Seuraavaksi generoin keypair:in komennolla "ssh-keygen". Tässä vaiheessa terminaalissa piti painaa 3 kertaa enteriä, mikä hyväksyi kaikki oletusasetukset. 
 Sitten juuri tehty keypair kopioitiin localhostiin komennolla "ssh-copy-id localhost". Tämän jälkeen tuli salasana antaa vielä viimeisen kerran. Kyseinen komento lisäsi public key:n ssh/authorized_keys ja nyt kirjautuminen onnistuu SSH:n kautta ilman salasanaa.
-![ssh-copy-id localhost](
+![ssh-copy-id localhost](ssh.png)
