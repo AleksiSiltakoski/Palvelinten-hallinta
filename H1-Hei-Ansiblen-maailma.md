@@ -25,4 +25,5 @@ Seuraavaksi loin kansion ansiblen configurationille komennolla "mkdir ansible". 
 Tämän jälkeen loin tiedoston hosts.ini sisälle laittamalla terminaaliin komennon "nano hosts.ini". Kirjoitin tämän jälkeen nanoon "localhost" ja tallensin muutokseni ctrl + o + enter ja poistuin nanosta ctrl + x.
 Tarkistin tämän jälkeen hosts.ini sisällön komennolla "cat hosts.ini" ja tuloste oli juuri laittamani "localhost". 
 Seuraavaksi laitoin terminaaliin komennon "ansible all -a 'uptime' -i hosts.ini". Se suoritti uptime-komennon Ansible:n kautta.
+![ansible-uptime-komento](ansible1.png)
 
