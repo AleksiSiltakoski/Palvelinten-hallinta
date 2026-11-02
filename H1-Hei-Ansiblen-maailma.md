@@ -18,3 +18,11 @@ Sitten juuri tehty keypair kopioitiin localhostiin komennolla "ssh-copy-id local
 Seuraavaksi kirjoitin virtuaalikoneen terminaaliin komennon: "ssh localhost" ja pystyin kirjautumaan ilman salasanan käyttöä.
 ![ssh-copy-id localhost](ssh.png)
 
+## Ansiblen lataus ja Hei maailman teko ja kokeileminen SSH:n yli
+Ajoin uusimmat päivitykset jälleen komennolla "sudo apt-get update".
+Tämän jälkeen asensin ansiblen laittamalla virtuaalikoneen terminaaliin komennon "sudo apt-get install ansible". Tämän jälkeen kesti hetken ja ansible oli asentunut. 
+Seuraavaksi loin kansion ansiblen configurationille komennolla "mkdir ansible". Tämän jälkeen siirryin kansioon komennolla "cd ansible/"
+Tämän jälkeen loin tiedoston hosts.ini sisälle laittamalla terminaaliin komennon "nano hosts.ini". Kirjoitin tämän jälkeen nanoon "localhost" ja tallensin muutokseni ctrl + o + enter ja poistuin nanosta ctrl + x.
+Tarkistin tämän jälkeen hosts.ini sisällön komennolla "cat hosts.ini" ja tuloste oli juuri laittamani "localhost". 
+Seuraavaksi laitoin terminaaliin komennon "ansible all -a 'uptime' -i hosts.ini". Se suoritti uptime-komennon Ansible:n kautta.
+
