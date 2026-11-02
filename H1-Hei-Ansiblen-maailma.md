@@ -31,3 +31,4 @@ Nyt ansible pystyy käyttämään SSH-yhteyttä.
 Seuraavaksi otin turhan virhe viestin python versiosta pois, joka on kuvassa pinkillä. 
 Ensiksi menin takaisin "nano hosts.ini" ja liitin nanossa localhostin alapuolelle yhden rivin väliä, jonka jälkeen tekstit: "[all:vars]
 ja seuraavalle riville ansible_python_interpreter=/usr/bin/python3". Tämän jälkeen tallennuksen jälkeen kijroitin terminaaliin komennon "ansible all -a 'uptime' -i hosts.ini" uudestaan ja pinkki error-viesti oli poistunut.
+![ansible-uptime-komento-uusi](ansible2.png)
