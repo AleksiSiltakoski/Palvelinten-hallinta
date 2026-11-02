@@ -52,3 +52,10 @@ Tämän jälkeen avastin tiedoston "nano roles/hello/tasks/main.yml" ja kirjoiti
     dest: /tmp/hello-ansible
     content: "See you at TeroKarvinen.com!\n"
   Tämän jälkeen ajoin komennon "ansible-playbook site.yml"
+  ![ansible-playbook-site.yml-komento](ansible3.png)
+
+  Tämän jälkeen ajoin vielä varmistukseksi toisen komennon: "ssh localhost 'cat /tmp/hello-ansible'", mikä tulosti "See you at Terokarvinen.com" (näkyy ylhäällä olevassa kuvassa. Tässä kohtaa testasin hello ansiblea SSH:n yli.
+
+## Lähteet
+Tero karvinen 2026: Hello Ansible: https://terokarvinen.com/hello-ansible/ luettu: 2.11.2026
+Tero Karvinen 2026: SSH public key - Login without password: https://terokarvinen.com/ssh-public-key-login-without-password/ Luettu 2.11.2026
