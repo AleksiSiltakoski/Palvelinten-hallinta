@@ -1,5 +1,16 @@
 # H1-Hei-Ansiblen-Maailma
 
+## Tiivistelmät kahdesta nettisivusta SSH-Public key - login without password & Hello ansible
+
+- SSH ladataan komennolla "sudo apt-get -y install ssh"
+- SSH demoni laitetaan käynnistämään käynnistyksessä ja heti päälle komennolla: "sudo systemctl enable --now ssh"
+- SSH testataan komennolla "ssh localhost"
+- Opin asentamaan ssh:n ja laittamaan sen toimimaan
+
+- Ansible ladataan komennolla "sudo apt-get install ansible"
+- ansible all -a 'uptime' -i hosts.ini, komennolla voidaan testata SSH:ta ansiblella
+- Opin tässä tehtävässä myös ansiblesta ja sen käytöstä. 
+
 ## Tehtävänä oli asentaa SSH-demoni ja katsoa että se toimii. Tämän jälkeen automatisoida SSH-kirjautuminen julkisella avaimella. Ja tämän jälkeen tehdä hei maailma ansiblella.
 
 ## SSH-demonin lataus
