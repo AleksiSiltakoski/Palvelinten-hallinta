@@ -26,4 +26,8 @@ Tämän jälkeen loin tiedoston hosts.ini sisälle laittamalla terminaaliin kome
 Tarkistin tämän jälkeen hosts.ini sisällön komennolla "cat hosts.ini" ja tuloste oli juuri laittamani "localhost". 
 Seuraavaksi laitoin terminaaliin komennon "ansible all -a 'uptime' -i hosts.ini". Se suoritti uptime-komennon Ansible:n kautta.
 ![ansible-uptime-komento](ansible1.png)
+Nyt ansible pystyy käyttämään SSH-yhteyttä. 
 
+Seuraavaksi otin turhan virhe viestin python versiosta pois, joka on kuvassa pinkillä. 
+Ensiksi menin takaisin "nano hosts.ini" ja liitin nanossa localhostin alapuolelle yhden rivin väliä, jonka jälkeen tekstit: "[all:vars]
+ja seuraavalle riville ansible_python_interpreter=/usr/bin/python3". Tämän jälkeen tallennuksen jälkeen kijroitin terminaaliin komennon "ansible all -a 'uptime' -i hosts.ini" uudestaan ja pinkki error-viesti oli poistunut.
