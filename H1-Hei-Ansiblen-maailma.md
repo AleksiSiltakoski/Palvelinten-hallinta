@@ -32,3 +32,23 @@ Seuraavaksi otin turhan virhe viestin python versiosta pois, joka on kuvassa pin
 Ensiksi menin takaisin "nano hosts.ini" ja liitin nanossa localhostin alapuolelle yhden rivin väliä, jonka jälkeen tekstit: "[all:vars]
 ja seuraavalle riville ansible_python_interpreter=/usr/bin/python3". Tämän jälkeen tallennuksen jälkeen kijroitin terminaaliin komennon "ansible all -a 'uptime' -i hosts.ini" uudestaan ja pinkki error-viesti oli poistunut.
 ![ansible-uptime-komento-uusi](ansible2.png)
+
+Tämän jälkeen avasin "nano ansible.cfg" ja kirjoitin sinne ensimmäiselle riville [defaults] ja toiselle riville: inventory = hosts.ini. Tallensin ctrl + o ja enter ja poituin ctrl + x.
+Tarkistin, että kaikki oli oikein komennolla "cat ansible.cfg".
+Tämän jälkeen riiti, että terminaaliin kirjoitti komennon "ansible all -a 'uptime' ja edellisessä komennossa mukana olleen kohdan: "-i hosts.ini" pystyy tästä lähtien jättämään pois kokonaan, kun käytetään komentoja "ansible" & "ansible-playbook".
+
+Tämän jälkeen kirjoitin komennon "nano site.yml" ja sinne lisättiin: 
+- hosts: all
+  roles:
+    - hello
+Site.yml listaa mitkä tietokoneet saavat mitkä konfiguraatiot eli roolit. Kyseinen komento laitettiin, koska halutaan että kaikki koneet saavat roolin "hello".
+Tämän jälkeen terminaalissa ajettiin komento: "ansible-playbook site.yml".
+Näytölle tuli punainen error-viesti, jossa sanottiin, että roolia "hello" ei ole olemassa, joten se pitää tehdä. Lisäksi tuli varmistus kuitenkin siitä, että ansible-playbook lukee tiedoston site.yml, mikä on hyvä tieto.
+
+Seuraavaksi loin kyseisen "hello"- roolin. 
+Loin tarvittavat kansiot laittamalla komennon "mkdir -p roles/hello/tasks/" virtuaalikoneen terminaaliin. 
+Tämän jälkeen avastin tiedoston "nano roles/hello/tasks/main.yml" ja kirjoitin sinne: 
+- copy:
+    dest: /tmp/hello-ansible
+    content: "See you at TeroKarvinen.com!\n"
+  Tämän jälkeen ajoin komennon "ansible-playbook site.yml"
