@@ -4,7 +4,14 @@
 - käyttäjä luodaan komennolla "sudo adduser"
 - Ryhmä luodaan komennolla "sudo groupadd"
 - "sudo visudo /etc/sudoers.d/sudoless" ja "sinne %sudoless ALL = (ALL) NOPASSWD: ALL" antaa kaikkien sudoless ryhmän jäsenten käyttää sudoa ilman salasanaa.
-- Tärkeää muistaa lisätä aina "nano site.yml" roolin alle aina uusi juuri luotu rooli.
+- "sudo -i" Menee pois sudo käyttäjästä.
+- "ansible-playbook site.yml -ask-become-password" suorittaa site.yml-playbookin ja kysyy sudosalasanaa, pelkkä "ansible-playbook site.yml" ei riitä.
+  - Tärkeää muistaa lisätä aina "nano site.yml" roolin alle aina uusi juuri luotu rooli eli esimerkiksi näin:
+  - hosts: all
+  become: true
+  roles:
+    - testi
+    - kokeilu
    
 
 
