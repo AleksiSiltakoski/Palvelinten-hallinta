@@ -4,6 +4,8 @@
 - käyttäjä luodaan komennolla "sudo adduser"
 - Ryhmä luodaan komennolla "sudo groupadd"
 - "sudo visudo /etc/sudoers.d/sudoless" ja "sinne %sudoless ALL = (ALL) NOPASSWD: ALL" antaa kaikkien sudoless ryhmän jäsenten käyttää sudoa ilman salasanaa.
+- Tärkeää muistaa lisätä aina "nano site.yml" roolin alle aina uusi juuri luotu rooli.
+   
 
 
 ## a) osa
