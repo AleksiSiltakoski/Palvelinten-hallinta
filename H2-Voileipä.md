@@ -23,7 +23,9 @@ Tämä lisäsi sudoers säännön, missä kaikki sudoless ryhmän käyttjät voi
 Tässä tehtävässä seurasin Tero Karvinen "Passwordles Sudo with Ansible" ohjeita.
 Aluksi loin tiedoston mkdir -p roles/aleksi2/tasks
 Tämän jälkeen komennolla "nano roles/aleksi2/tasks/main.yml
-Ja lisäsin sinne ohjeiden mukaisesti <img width="895" height="480" alt="image" src="https://github.com/user-attachments/assets/30de2ad7-48f6-41a9-82f1-53548854f553" />
+Ja lisäsin sinne ohjeiden mukaisesti <img width="895" height="480" alt="image" src="https://github.com/user-attachments/assets/30de2ad7-48f6-41a9-82f1-53548854f553" /> ylhäällä oleva kuva ohjeesta Tero Karvinen 2026 "Passwordles Sudo with Ansible".
+Sitten menin "nano site.yml" ja sinne kohdan "hosts" alle kohdan "become: true" & "roles" kohtaan "aleksi2".
+Tämän jälkeen ajoin terminaalissa komennon "ansible-playbook site.yml" ja tuli virhe ilmmoitus, jossa sanottiin, että sudo tarvitsee salasanan. <img width="901" height="262" alt="image" src="https://github.com/user-attachments/assets/1976b720-4e2a-4d3e-8c76-c147aaea8ec1" />
 
 
 ## Lähteet
