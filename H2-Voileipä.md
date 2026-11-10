@@ -1,4 +1,4 @@
-# H1 Voileipä
+# H2 Voileipä
 
 ## Tiivistykset kappaleista
 - käyttäjä luodaan komennolla "sudo adduser"
