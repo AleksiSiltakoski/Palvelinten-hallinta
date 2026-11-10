@@ -50,6 +50,46 @@ Tämän jälkeen lisäsin roolin site.yml komennolla "nano site.yml". Ja lisäsi
 Sitten ajoin komennon: "ansible-playbook site.yml --ask-become-password"
 <img width="1519" height="702" alt="image" src="https://github.com/user-attachments/assets/220f5212-272c-44dd-8ea7-ea6d36f6dd35" />
 
+## d) osa 
+Loin ensiksi roolin nimeltä file komennolla "mkdir -p roles/file/tasks"
+Tämän jälkeen kirjoitin terminaaliin komennon "nano roles/file/tasks/main.yml"
+Ja sisällöksi laitoin: 
+---
+- name: Create text file
+  copy:
+    dest: /home/aleksi2/ansible.txt
+    content: |
+      Nimeni on aleksi moro!
+      Käyn tätä kurssia tällä hetkellä kolmatta viikkoa.
+      Ja joo öö joo.
+    owner: aleksi2
+    group: aleksi2
+    mode: "0600"
+Eli omistaja on "aleksi2".
+
+Tämän jälkeen lisäsin "filen" site.yml komennolla "nano site.yml" ja laitoin siellä packages alapuolelle "file".
+Ajoin komennon "ansible-playbook site.yml --ask-become-pass" ja syötin salasanan.
+Tämän jälkeen vielä koitin tarkistaa tiedostoa komennolla "ls -l /home/aleksi2/ansible.txt", mutta koska tiedoston omistaja oli "aleksi2" ei se auennut.
+Tämän takia jouduin ajamaan komennon "sudo ls -l /home/aleksi2/ansible.txt" ja tämän jälkeen syötin salasanan ja se toimi.
+<img width="1516" height="748" alt="image" src="https://github.com/user-attachments/assets/6cbc0e7f-b961-40b9-aa30-ed094f23ed96" />
+Kuvan alalaidassa näkyy -rw-------
+Koska käytin mode "0600" on käyttäjällä "aleksi2" nyt oikeudet r (lukea) & w (kirjoittaa) tiedostoa. Eli "aleksi2" on ainoa kuka voi lukea ja muokata tiedostoa. 
+
+## e) osa
+Aloitin luomalla roolin "debug" komennolla "mkdir -p roles/debug/tasks"
+Sitten kirjoitin jälleen komennon "nano roles/debug/tasks/main.yml"
+Ja sinne kirjoitin:
+---
+- name: Show message
+  debug:
+    msg: "Ansible toimii!"
+
+Menin "nano site.yml" ja sinne kirjoitin roolien perään - debug
+Ajoin terminaalissa jälleen komennon "ansible-playbook site.yml --ask-become-pass".
+Ja tässä on lopputulos: <img width="742" height="383" alt="image" src="https://github.com/user-attachments/assets/bd7aea63-50aa-4d1a-9f86-16995f6784af" />
+Debugin tehtävä oli näyttää viesti "Ansible toimii" ja se toimi
+
+
 
 
 
@@ -57,3 +97,4 @@ Sitten ajoin komennon: "ansible-playbook site.yml --ask-become-password"
 Tero Karvinen 2026: Sudo without password: https://terokarvinen.com/passwordless-sudo/ Luettu 10.11.2026
 Tero Karvinen 2026: Passwordless Sudo with Ansible: https://terokarvinen.com/passwordless-sudo-with-ansible/ Luettu 10.11.2026
 Munroe 2006: xkcd Sandwich: https://xkcd.com/149/ Luettu 10.11.2026
+Docs.Ansible.com: ansible.builtin.debug.module : https://docs.ansible.com/ansible/latest/collections/ansible/builtin/debug_module.html luettu 10.11.2026
