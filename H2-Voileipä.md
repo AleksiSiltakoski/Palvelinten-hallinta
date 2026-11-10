@@ -27,6 +27,8 @@ Ja lisäsin sinne ohjeiden mukaisesti <img width="895" height="480" alt="image" 
 Sitten menin "nano site.yml" ja sinne kohdan "hosts" alle kohdan "become: true" & "roles" kohtaan "aleksi2".
 Tämän jälkeen ajoin terminaalissa komennon "ansible-playbook site.yml" ja tuli virhe ilmmoitus, jossa sanottiin, että sudo tarvitsee salasanan. <img width="901" height="262" alt="image" src="https://github.com/user-attachments/assets/1976b720-4e2a-4d3e-8c76-c147aaea8ec1" />
 
+Joten ajoin komennpn "ansible-playbook site.yml -K" ja syötin salasanan ja tämä oli lopputulos. <img width="1536" height="502" alt="image" src="https://github.com/user-attachments/assets/f9f6d634-0bac-4835-a3f7-d57da5da3ed2" />
+
 
 ## Lähteet
 Tero Karvinen 2026: Sudo without password: https://terokarvinen.com/passwordless-sudo/ Luettu 10.11.2026
