@@ -30,7 +30,26 @@ Tämän jälkeen ajoin terminaalissa komennon "ansible-playbook site.yml" ja tul
 Joten ajoin komennpn "ansible-playbook site.yml -K" ja syötin salasanan ja tämä oli lopputulos. <img width="1536" height="502" alt="image" src="https://github.com/user-attachments/assets/f9f6d634-0bac-4835-a3f7-d57da5da3ed2" />
 
 ## c) osa
-Asensin kaksi pakettia seuraavaksi ansiblella. Nämä olivat tree ja htop. Lö
+Asensin kaksi pakettia seuraavaksi ansiblella. Nämä olivat tree ja htop. 
+Ensiksi loin uuden roolin komennolla "mkdir -p roles/packages/tasks"
+Tämän jälkeen menin nanoon "nano roles/packages/tasks/main.yml"
+Nanoon lisäsin:
+---
+- name: Install packages
+  apt:
+    name:
+      - tree
+      - htop
+    state: present
+    update_cache: yes
+
+  name: ne paketit, jotka asennan
+  state: present eli paketin pitää olla asennettu
+  updatet_cache: yes = päivittää pakettilistan ennen asennusta
+Tämän jälkeen lisäsin roolin site.yml komennolla "nano site.yml". Ja lisäsin rooli kohdassa "aleksi2" alapuolelle juuri luomani "packages" roolin.
+Sitten ajoin komennon: "ansible-playbook site.yml --ask-become-password"
+<img width="1519" height="702" alt="image" src="https://github.com/user-attachments/assets/220f5212-272c-44dd-8ea7-ea6d36f6dd35" />
+
 
 
 
