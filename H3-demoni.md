@@ -11,8 +11,7 @@
 - "Handlersit" toteutetaan siinä järjestyksessä, missä ne on annettu "handlersseissa", eikä siinä missä ne on kerrottu "notify" kohdassa.
 
 # Artikkelin tiivistys
-
-
+Linkki uutiseen: https://news.ycombinator.com/item?id=39983536 
 # a) Kohta apache2 
 Olin jo ladannut aiemmissa tehtävissä apachen, joten tässä kohtaa tein vain uuden hakemiston komennolla "mkdir -p ~/public_html". 
 Tämän jälkeen terminaaliin laitoin komennon "nano ~/public_html/index.html" ja sinne kirjoitin "Testi sivu harjoitus".
@@ -63,7 +62,7 @@ Palybook suoritettiin onnistuneesti:
 Nginx https://wiki.debian.org/Nginx luettu 17.11.2026
 Karvinen 2026: Apache installed with Ansible -quick notes: https://terokarvinen.com/apache-ansible/ luettu 17.11.2026
 Ansbile community documentation https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html luettu 17.11.2026
-
+Infrastructure as Code for buildinghttps://news.ycombinator.com/item?id=39983536
 
 
 
