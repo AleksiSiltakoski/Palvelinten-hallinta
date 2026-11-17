@@ -12,6 +12,12 @@
 
 # Artikkelin tiivistys
 Linkki uutiseen: https://news.ycombinator.com/item?id=39983536 
+- Uutisessa käsitellään Ansiblea keskitetyn hallinnan työkaluna palvelimien ja infrastruktuurin ylläpidossa
+- IaC -> auttaa asioissa, mitkä ennen tehtiin käsin
+- CMS -> auttaa asioissa, mihin kukaan ei voi käsin koskea ja runnaa IaC elementtien sisällä.
+- Huomio: uutisessa käsiteltiin eroa infrastruktuurin automatisoinnin ja konfiguraation väillä.
+
+
 # a) Kohta apache2 
 Olin jo ladannut aiemmissa tehtävissä apachen, joten tässä kohtaa tein vain uuden hakemiston komennolla "mkdir -p ~/public_html". 
 Tämän jälkeen terminaaliin laitoin komennon "nano ~/public_html/index.html" ja sinne kirjoitin "Testi sivu harjoitus".
@@ -62,7 +68,7 @@ Palybook suoritettiin onnistuneesti:
 Nginx https://wiki.debian.org/Nginx luettu 17.11.2026
 Karvinen 2026: Apache installed with Ansible -quick notes: https://terokarvinen.com/apache-ansible/ luettu 17.11.2026
 Ansbile community documentation https://docs.ansible.com/projects/ansible/latest/playbook_guide/playbooks_handlers.html luettu 17.11.2026
-Infrastructure as Code for buildinghttps://news.ycombinator.com/item?id=39983536
+Ansible- Infrastructure as Code for building up my Homelab: https://news.ycombinator.com/item?id=39983536 Luettu 17.11.2026
 
 
 
