@@ -17,7 +17,8 @@ Tämän jälkeen ajoin ansible-playbookin kommennolla "ansible-playbook -i hosts
 
 # c) Seuraavakai vuorossa oli Asetusten muuttaminen "master modella" ja ansbilen uudestan ajo
 Aloitin tehtävän tarkistamalla, mikä PostgreSQL-versio minulla oli lataamalla kirjoittamalla terminaaliin komennon ls /etc/postgresql". Tulos oli 17.
-Tämän jälkeen jatkoin siirtymällä "nano roles/postgresql/tasks/main.yml". Tämän jälkeen muokkasin tiedostoa lisäämällä PostgrreSql:n latauksen alapuolelle uuden set log_connectionsin: <img width="628" height="291" alt="image" src="https://github.com/user-attachments/assets/af2f729a-27d2-4189-8fee-30b71175c5f4" />
+Tämän jälkeen jatkoin siirtymällä "nano roles/postgresql/tasks/main.yml". Tämän jälkeen muokkasin tiedostoa lisäämällä PostgrreSql:n latauksen alapuolelle uuden set log_connectionsin:
+<img width="628" height="291" alt="image" src="https://github.com/user-attachments/assets/af2f729a-27d2-4189-8fee-30b71175c5f4" />
 
 Se siis avaa PostgreSQL:n asetustiedoston postgresql.conf ja etsii rivin joka alkaa log_connections. Jos rivi löytyy ansible korvaa sen arvoilla "log_connections = on". Ja jos riviä ei löydy ansible puolestaan lisää sen tiedostonn.
 "Log_connections = on" kirjaa jokaisen uuden yhteyden tietokantaan.
@@ -27,6 +28,29 @@ Seuraavaksi ajoin ansible-playbookin komennolla "ansible-playbook -i hosts.ini s
 
 Lopuksi ajoin vielä komennon "grep log_connections /etc/postgresql/17/main/postgresql.conf". Mikä näyttää, että tekemäni muutokset asetuksiin olivat tulleet voimaan. <img width="940" height="90" alt="image" src="https://github.com/user-attachments/assets/96972d1e-50e9-4cce-acea-7d3ede15ddb5" />
 Tehtävän tekemiseen käytin apuna seuraavaa lähdettä https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/lineinfile_module.html
+
+# d) Paikka remonttiin
+Tässä tehtävässä tuli rikkoa jotain asetusta ja tämän jälkeen ajaa ansible uudelleen, jotta se korjaa asetuksen itsenäisesti.
+Aloitin tehtävän avaamalla PostgreSQL:n asetustiedoston komennolla "sudo nano /etc/postgresql/17/main/postgresql.conf".
+Sieltä etsin rivin jossa sanottiin "log_connections = on" ja muutin sen "log_connections = off". 
+
+<img width="273" height="52" alt="image" src="https://github.com/user-attachments/assets/65e0893f-ff10-4356-9b03-35f030635556" />
+
+Tämän jälkeen ajoin komennon "grep log_connections /etc/postgresql/17/main/postgresql.conf", mistä näkyi että asetus oli muuttunut rikki. 
+
+<img width="852" height="55" alt="image" src="https://github.com/user-attachments/assets/e80fda86-2454-49ff-be41-0803f7c3085b" />
+
+Ajoin sitten ansible-playbookin uudestaan: 
+
+<img width="1309" height="150" alt="image" src="https://github.com/user-attachments/assets/0343b9a3-f012-43d0-a97e-01d3ccd70c97" />
+
+Ja lopuksi ajoin komennon "grep log_connections /etc/postgresql/17/main/postgresql.conf", mikä näytti, että tulos oli vaihtunut log_connections = on eli ansible muutti sen takaisin onnistuneesti.
+
+<img width="997" height="124" alt="image" src="https://github.com/user-attachments/assets/e140c256-3ab3-47f2-a868-de1df7f8a685" />
+
+
+
+
 
 # Lähteet:
 Ansible Community Documentation - ansible.builtin.lineinfile module – Manage lines in text files: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/lineinfile_module.html luettu 23.11.2026
