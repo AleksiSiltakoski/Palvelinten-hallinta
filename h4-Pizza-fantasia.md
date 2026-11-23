@@ -1,5 +1,22 @@
 # Postgresql
 
+# x) Tiivistykset 
+
+# Size and complexity of Some DSLs 
+- DSL-kielet voivat tulla todella hankaliksi ja suuriksi
+- Salt DSl dokumentaatio on yli 20 000 riviä ja yli 75 000 sanaa, mikä on siis pidempi kuin tyypillisesti väitöskirjat.
+- Oma huomio: Yllätyin kuinka paljon Salt DSL dokumentaatio sisältää oikeasti tekstiä.
+
+# Use of DSL functions in Case Configuration
+- Demonit asennetaan ja määritetään package-file-servicellä ja asiakasohjelmat käyttävät tyypillisesti package-file mallia.
+- Yleisimmät konfiguraationhallinnan toiminnot liittyvät paketteihin, tiedostoihin ja palveluihin.
+
+#  Dependencies Between Main Functions
+- Yleisimmät konfiguraationhallinnan resurssit ovat package, file, service, user, group, directory, symlink ja exec.
+- Demonin tyypillinen asennus perustuu juuri package-file-service malliin
+- Idempotenttuus voidaan toteuttaa tarkistamalla esimerkiksi tiedoston olemassaolo ja sisältö ennen muutoksia. Ja tämän jälkeen muutostosten jälkeen
+
+  
 # a) Tässä tehtävässä latasin demonin Postgresql.
 Aloitin demonin lataamisen kirjoittamalla linuxin terminaliin komennon "sudo apt-get update". 
 Tämän jälkeen heti perään kirjoitin komennon "sudo apt-get -y install postgresql", mikä latasi itse demonin. 
@@ -18,6 +35,7 @@ Tämän jälkeen ajoin ansible-playbookin kommennolla "ansible-playbook -i hosts
 # c) Seuraavakai vuorossa oli Asetusten muuttaminen "master modella" ja ansbilen uudestan ajo
 Aloitin tehtävän tarkistamalla, mikä PostgreSQL-versio minulla oli lataamalla kirjoittamalla terminaaliin komennon ls /etc/postgresql". Tulos oli 17.
 Tämän jälkeen jatkoin siirtymällä "nano roles/postgresql/tasks/main.yml". Tämän jälkeen muokkasin tiedostoa lisäämällä PostgrreSql:n latauksen alapuolelle uuden set log_connectionsin:
+
 <img width="628" height="291" alt="image" src="https://github.com/user-attachments/assets/af2f729a-27d2-4189-8fee-30b71175c5f4" />
 
 Se siis avaa PostgreSQL:n asetustiedoston postgresql.conf ja etsii rivin joka alkaa log_connections. Jos rivi löytyy ansible korvaa sen arvoilla "log_connections = on". Ja jos riviä ei löydy ansible puolestaan lisää sen tiedostonn.
@@ -49,9 +67,17 @@ Ja lopuksi ajoin komennon "grep log_connections /etc/postgresql/17/main/postgres
 <img width="997" height="124" alt="image" src="https://github.com/user-attachments/assets/e140c256-3ab3-47f2-a868-de1df7f8a685" />
 
 
+# e) Idempotentti
+
+Ajoin komennon "ansible-playbook -i hosts.ini site.yml -K"
+
+<img width="614" height="50" alt="image" src="https://github.com/user-attachments/assets/a291fa0d-04c7-4e7a-af8b-fd5a59bd46f5" />
+
+Tuloksesta näkee, että tilani on idempotentti, koska ansiblen-playbook ei tehnyt mitään muutoksia.
 
 
 
 # Lähteet:
 Ansible Community Documentation - ansible.builtin.lineinfile module – Manage lines in text files: https://docs.ansible.com/projects/ansible/latest/collections/ansible/builtin/lineinfile_module.html luettu 23.11.2026
 University of Westminster - Configuration Management of Distributed Systems over Unreliable and Hostile Networks: https://westminsterresearch.westminster.ac.uk/item/w7vvz/configuration-management-of-distributed-systems-over-unreliable-and-hostile-networks luettu 23.11.2026
+Tero Karvinen 2016 - PostgreSQL Install and One Table Database – SQL CRUD tutorial for Ubuntu: https://terokarvinen.com/2016/postgresql-install-and-one-table-database-sql-crud-tutorial-for-ubuntu/ luettu 23.11.2026
